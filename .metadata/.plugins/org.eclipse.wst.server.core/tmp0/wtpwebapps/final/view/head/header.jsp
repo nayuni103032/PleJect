@@ -37,7 +37,7 @@
 						</div>
 					</li>
 					<c:if test='${name == null || name.equals("") }'>
-					<li><a href = "${pageContext.request.contextPath}/member/signUpForm"><i class = "xi-user"></i><span>Sign In</span></a></li>
+					<li><a href = "${pageContext.request.contextPath}/content/loginForm"><i class = "xi-user"></i><span>Sign In</span></a></li>
 					</c:if>
 					<c:if test="${name != null }">
 					<li><a href = "${pageContext.request.contextPath}/content/loginForm"><i class="xi-profile"></i><span>${name}님</span></a>

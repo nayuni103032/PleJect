@@ -39,6 +39,15 @@
     <url-pattern>/member/*</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>RoomController</servlet-name>
+    <servlet-class>conn.RoomController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RoomController</servlet-name>
+    <url-pattern>/room/*</url-pattern>
+  </servlet-mapping>
+  
  
   
 </web-app>
