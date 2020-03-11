@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class RoomDataBean {
 
@@ -11,7 +11,6 @@ public class RoomDataBean {
 	private String photo;
 	private String content;
 	private String host;
-	private Timestamp meet_data;
 	private int membercnt;
 	private String location;
 
@@ -69,14 +68,6 @@ public class RoomDataBean {
 
 	public void setHost(String host) {
 		this.host = host;
-	}
-
-	public Timestamp getMeet_data() {
-		return meet_data;
-	}
-
-	public void setMeet_data(Timestamp meet_data) {
-		this.meet_data = meet_data;
 	}
 
 	public int getMembercnt() {

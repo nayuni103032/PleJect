@@ -51,7 +51,7 @@
 </head>
 <body>
 	<form action="roomWritePro" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="host" value="나야나">
+		<input type="hidden" name="host" value="${name }">
 		<table>
 			<tr>
 				<td><select onchange="list(this)" name="like_ca">
@@ -82,7 +82,7 @@
 			</tr>
 
 			<tr>
-				<td>멤버 수 : <input type="text" name="membercnt">
+				<td>멤버 수 : <input type="number" name="membercnt" max="100" min="2" placeholder="2">
 				</td>
 			</tr>
 
@@ -91,7 +91,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>모임 날짜 : <input type="date" name="meet_data">
+				<td>모임 날짜 : <input type="date" name="meet_date">
 				</td>
 			</tr>
 

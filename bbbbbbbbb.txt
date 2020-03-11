@@ -6,10 +6,18 @@ meet_title VARCHAR2(50),    /* 모임명 */
 photo VARCHAR2(100),   /* 메인 사진*/
 content VARCHAR2(3000),    /* 모임 내용 */
 host VARCHAR2(100),    /* 모임장 */
-meet_date DATE,   /* 모임 날짜 */
 membercnt NUMBER,   /* 멤버 수 */
-location  VARCHAR2(100)   /* 모임 위치 */
+location  VARCHAR2(100)   /* 모임 대략 위치 */
 );
+
+create table classBook(
+num NUMBER,
+meet_subtitle varchar2(100), /* 서브 제목*/
+meet_date varchar2(100),  /* 모임 날짜 */
+meet_time varchar2(100), /* 모임 시간*/
+location Varchar2(100) /* 모임 세부 위치*/
+);
+
 commit;
 drop table hobbyclass;
 

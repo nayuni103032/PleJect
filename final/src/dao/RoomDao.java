@@ -50,7 +50,7 @@ public class RoomDao {
 				number = rs.getInt(1);
 			}
 
-			pstmt = conn.prepareStatement("insert into hobbyclass values(?,?,?,?,?,?,?,?,?,?) ");
+			pstmt = conn.prepareStatement("insert into hobbyclass values(?,?,?,?,?,?,?,?,?) ");
 			pstmt.setInt(1, number);
 			pstmt.setInt(2, Bean.getLike_ca());
 			pstmt.setInt(3, Bean.getLike_sub());
@@ -58,9 +58,8 @@ public class RoomDao {
 			pstmt.setString(5, Bean.getPhoto());
 			pstmt.setString(6, Bean.getContent());
 			pstmt.setString(7, Bean.getHost());
-			pstmt.setTimestamp(8, Bean.getMeet_data());
-			pstmt.setInt(9, Bean.getMembercnt());
-			pstmt.setString(10, Bean.getLocation());
+			pstmt.setInt(8, Bean.getMembercnt());
+			pstmt.setString(9, Bean.getLocation());
 
 			pstmt.executeUpdate();
 

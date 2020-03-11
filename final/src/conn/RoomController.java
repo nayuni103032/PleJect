@@ -2,7 +2,9 @@ package conn;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Enumeration;
 
 import javax.servlet.ServletContext;
@@ -42,7 +44,7 @@ public class RoomController extends ActionAnnotation {
 		LogonDao service = LogonDao.getInstance();
 		LogonDataBean member = service.getUser((String)session.getAttribute("memEmail"));
 		
-		request.setAttribute("host", member.getName());
+		request.setAttribute("name", member.getName());
 		
 		return "/view/content/room/roomWriteForm.jsp";
 	}
@@ -74,12 +76,12 @@ public class RoomController extends ActionAnnotation {
 				
 			}
 			
+			
 			Room.setContent(multi.getParameter("content"));
 			Room.setHost(multi.getParameter("host"));
 			Room.setLike_ca(Integer.parseInt(multi.getParameter("like_ca")));
 			Room.setLike_sub(Integer.parseInt(multi.getParameter("like_sub")));
 			Room.setLocation(multi.getParameter("location"));
-//			Room.setMeet_data(new Timestamp(Integer.parseInt(multi.getParameter("meet_data"))));
 			Room.setMeet_title(multi.getParameter("meet_title"));
 			Room.setMembercnt(Integer.parseInt(multi.getParameter("membercnt")));
 			
