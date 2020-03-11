@@ -3774,3 +3774,9 @@ java.net.UnknownHostException: jope.ow2.org
 
 !ENTRY org.eclipse.jface.text 2 0 2020-03-11 19:27:42.441
 !MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2020-03-11 20:13:10.085
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2020-03-11 20:13:10.091
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'

@@ -90,10 +90,6 @@
 				<td>모임 위치 : <input type="text" name="location">
 				</td>
 			</tr>
-			<tr>
-				<td>모임 날짜 : <input type="date" name="meet_date">
-				</td>
-			</tr>
 
 			<tr>
 				<td><input type="submit" value="모임 등록"></td>
