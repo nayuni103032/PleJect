@@ -1,0 +1,18 @@
+package model;
+
+import java.sql.Timestamp;
+
+public class RoomDataBean {
+
+	private int num;
+	private int like_ca;
+	private int like_sub;
+	private String meet_title;
+	private String photo;
+	private String content;
+	private String host;
+	private Timestamp meet_data;
+	private int membercnt;
+	private String location;
+	
+}

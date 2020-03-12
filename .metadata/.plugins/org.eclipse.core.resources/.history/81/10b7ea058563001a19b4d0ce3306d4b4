@@ -1,0 +1,110 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script>
+	function list(e) {
+		var good_a = [ "지수", "제니", "로제", "리사" ];
+		var good_b = [ "빅토리아", "엠버", "루나", "크리스탈" ];
+		var good_c = [ "LE", "하니", "정화", "혜린", "솔지" ];
+
+		var d;
+		var target = document.getElementById("small");
+
+		if (e.value == 1) {
+			d = good_a;
+			target.style.display = "inline-block";
+		} else if (e.value == 2) {
+			d = good_b;
+			target.style.display = "inline-block";
+		} else if (e.value == 3) {
+			d = good_c;
+			target.style.display = "inline-block";
+		} else {
+			target.style.display = "none";
+		}
+
+		// 		for (var x = 0; x < d.length; x++) {
+		// 			alert(d[x]);
+		// 			var option = document.createElement("option");
+		// 			alert("option");
+		// 			option.value = d[x];
+		// 			alert("d[x].value");
+		// 			option.innerHTML = d[x];
+		// 			alert("d[x].innerHTML");
+		// 			target.appendChild(option);
+		// 			alert(d[x]);
+		// 		}
+		target.options.length = 0;
+
+		for (x in d) {
+			var option = document.createElement("option");
+			option.value = x;
+			option.innerHTML = d[x];
+			target.appendChild(option);
+		}
+
+	}
+</script>
+</head>
+<body>
+	<form action="roomWritePro" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="host" value="${name }">
+		<table>
+			<tr>
+				<td><select onchange="list(this)" name="like_ca">
+						<option>대분류</option>
+						<%-- 						<c:forEach var="li" items="${li }" varStatus="index"> --%>
+						<%-- 							<option value="${index.index}" id="">${li. }</option> --%>
+						<%-- 						</c:forEach> --%>
+						<option value="1">대분류1</option>
+						<option value="2">대분류2</option>
+						<option value="3">대분류3</option>
+
+
+				</select> <select id="small" name="like_sub" style="display: none">
+						<option>소분류</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>메인 사진 : <input type="file" name="photo">
+				</td>
+			</tr>
+			<tr>
+				<td>모임 제목 : <input type="text" name="meet_title">
+				</td>
+			</tr>
+			<tr>
+				<td>모임 내용 : <textarea rows="3" cols="30" name="content"></textarea>
+				</td>
+			</tr>
+
+			<tr>
+				<td>멤버 수 : <input type="number" name="membercnt" max="100" min="2" placeholder="2">
+				</td>
+			</tr>
+
+			<tr>
+				<td>모임 위치 : <input type="text" name="location">
+				</td>
+			</tr>
+			<tr>
+				<td>모임 날짜 : <input type="datet" name="meet_date">
+				</td>
+			</tr>
+
+			<tr>
+				<td><input type="submit" value="모임 등록"></td>
+				<td><input type="reset" value="다시 작성"></td>
+				<td><input type="button"  value="돌아 가기" onclick="javascript:window.location='<%=request.getContextPath()%>/content/main'"></td>
+			</tr>
+		</table>
+
+
+
+
+	</form>
+</body>
+</html>

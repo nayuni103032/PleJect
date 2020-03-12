@@ -1,12 +1,12 @@
-create table hobby_class(
-num number primary key,
-like number, /*관심사 카테고리*/
-like_sub number, /* 관심사 서브*/
-subject varchar2(50),  /* 모임 제목 */
-photo varchar(100), /* 메인 사진*/
-content varchar2(3000),  /* 모임 내용 */
-host varchar(100),  /* 모임장 */
-date date,  /* 모임 날짜 */
-membercnt number,  /* 멤버 수 */
-cadress  varchar(100) /* 모임 위치 */
-)
+CREATE TABLE hobbyclass(
+num NUMBER primary key,
+like_ca NUMBER,  /*관심사 카테고리*/
+like_sub NUMBER,   /* 관심사 서브*/
+meet_title VARCHAR2(50),    /* 모임명 */
+photo VARCHAR2(100),   /* 메인 사진*/
+content VARCHAR2(3000),    /* 모임 내용 */
+host VARCHAR2(100),    /* 모임장 */
+meet_date DATE,   /* 모임 날짜 */
+membercnt NUMBER,   /* 멤버 수 */
+location  VARCHAR2(100)   /* 모임 위치 */
+);

@@ -1,0 +1,31 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class RoomDao {
+
+	private static RoomDao instance = new RoomDao();
+
+	public static RoomDao getInstance() {
+		return instance;
+	}
+
+	private RoomDao() {
+	}
+
+	private Connection getConnection() throws Exception {
+		Connection conn = null;
+
+		try {
+			String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:orcl";
+			String dbId = "users";
+			String dbPass = "1111";
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return conn;
+	}
+}

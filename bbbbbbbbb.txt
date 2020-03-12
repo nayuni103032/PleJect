@@ -1,0 +1,146 @@
+CREATE TABLE hobbyclass(
+num NUMBER primary key,
+like_ca NUMBER,  /*관심사 카테고리*/
+like_sub NUMBER,   /* 관심사 서브*/
+meet_title VARCHAR2(50),    /* 모임명 */
+photo VARCHAR2(100),   /* 메인 사진*/
+content VARCHAR2(3000),    /* 모임 내용 */
+host VARCHAR2(100),    /* 모임장 */
+membercnt NUMBER,   /* 멤버 수 */
+location  VARCHAR2(100)   /* 모임 대략 위치 */
+);
+
+create table classBook(
+num NUMBER,
+meet_subtitle varchar2(100), /* 서브 제목*/
+meet_date varchar2(100),  /* 모임 날짜 */
+meet_time varchar2(100), /* 모임 시간*/
+location Varchar2(100) /* 모임 세부 위치*/
+);
+
+commit;
+drop table hobbyclass;
+
+/* 회원 */
+create table member(
+email varchar2(80) not null primary key, /* 1. 이메일 */
+gender varchar2(5) not null, /* 2. 성별 */
+name varchar2(50) not null, /* 3. 닉네임 */
+password varchar2(50) not null, /* 4. 비밀번호 */
+phone varchar2(20) not null, /* 5. 전화번호 */
+birthday varchar2(20) not null, /* 6. 생일 */
+address varchar2(80) not null); /* 7. 내지역 */
+
+-----------------------------------------------------------------------------
+/* 관심사 */
+create table interest(
+interestNum number primary key, /* 관심사번호*/
+interestName varchar(30) not null
+);
+create SEQUENCE interest_seq START WITH 0 INCREMENT  BY 1 MINVALUE 0;
+drop table interest;
+drop sequence interest_seq;
+
+insert into interest values(interest_seq.NEXTVAL,'아웃도어/여행');
+insert into interest values(interest_seq.NEXTVAL,'운동/스포츠');
+insert into interest values(interest_seq.NEXTVAL,'인문학/책/글');
+insert into interest values(interest_seq.NEXTVAL,'외국/언어');
+insert into interest values(interest_seq.NEXTVAL,'문화/공연/축제');
+insert into interest values(interest_seq.NEXTVAL,'음악/악기');
+insert into interest values(interest_seq.NEXTVAL,'공예/만들기');
+insert into interest values(interest_seq.NEXTVAL,'댄스/무용');
+insert into interest values(interest_seq.NEXTVAL,'봉사활동');
+insert into interest values(interest_seq.NEXTVAL,'사교/인맥');
+insert into interest values(interest_seq.NEXTVAL,'차/오토바이');
+insert into interest values(interest_seq.NEXTVAL,'사진/영상');
+insert into interest values(interest_seq.NEXTVAL,'야구관람');
+insert into interest values(interest_seq.NEXTVAL,'게임/오락');
+insert into interest values(interest_seq.NEXTVAL,'요리/제조');
+insert into interest values(interest_seq.NEXTVAL,'반려동물');
+insert into interest values(interest_seq.NEXTVAL,'가족/결혼');
+insert into interest values(interest_seq.NEXTVAL,'자유주제');
+
+
+insert into interest values (1,'아웃도어/여행');
+insert into interest values (2,'운동/스포츠');
+insert into interest values (3,'인문학/책/글');
+insert into interest  values (4,'외국/언어');
+insert into interest  values (5,'문화/공연/축제');
+insert into interest  values (6,'음악/악기');
+insert into interest  values (7,'공예/만들기');
+insert into interest  values (8,'댄스/무용');
+insert into interest  values (9,'봉사활동');
+insert into interest  values (10,'사교/인맥');
+insert into interest  values (11,'차/오토바이');
+insert into interest  values (12,'사진/영상');
+insert into interest  values (13,'야구관람');
+insert into interest  values (14,'게임/오락');
+insert into interest  values (15,'요리/제조');
+insert into interest  values (16,'반려동물');
+insert into interest  values (17,'가족/결혼');
+insert into interest  values (18,'자유주제');
+
+
+---------------------------------------------------------------------------------------------------------------
+/* 관심사_sub */
+create table interest_sub(
+interNum number not null,
+interSubNum number, /* 관심사번호*/
+interSubName varchar2(30) not null
+);
+create SEQUENCE aa START WITH 0 INCREMENT by 1 MINVALUE 0;
+create SEQUENCE bb START WITH 1 INCREMENT by 1 MINVALUE 1;
+create SEQUENCE cc START WITH 1 INCREMENT by 1 MINVALUE 1;
+drop table interest_sub;
+drop SEQUENCE aa;
+drop SEQUENCE bb;
+
+insert into interest_sub   values (1,aa.nextval, '등산');
+insert into interest_sub   values (1,aa.nextval,'산책/트래킹');
+insert into interest_sub   values (1,aa.nextval, '캠핑/백패킹');
+insert into interest_sub   values (1,aa.nextval, '국내여행');
+insert into interest_sub   values (1,aa.nextval, '해외여행');
+insert into interest_sub   values (1,aa.nextval, '낚시');
+insert into interest_sub   values (1,aa.nextval, '패러글라이딩');
+insert into interest_sub   values (2,bb.nextval, '테니스');
+insert into interest_sub   values (2,bb.nextval, '야구');
+insert into interest_sub   values (2,bb.nextval, '축구');
+insert into interest_sub   values (2,bb.nextval, '스쿼시');
+insert into interest_sub   values (2,bb.nextval, '배드민턴');
+insert into interest_sub   values (2,bb.nextval, '농구');
+insert into interest_sub   values (2,bb.nextval, '탁구');
+insert into interest_sub   values (3,cc.nextval, '테니스');
+insert into interest_sub   values (3,cc.nextval, '야구');
+insert into interest_sub   values (3,cc.nextval, '축구');
+insert into interest_sub   values (3,cc.nextval, '스쿼시');
+insert into interest_sub   values (3,cc.nextval, '배드민턴');
+insert into interest_sub   values (3,cc.nextval, '농구');
+insert into interest_sub   values (3,cc.nextval, '탁구');
+
+insert into interest_sub(interNum, interSubName) values (1, '등산');
+insert into interest_sub(interNum, interSubName) values (1, '산책/트래킹');
+insert into interest_sub(interNum, interSubName) values (1, '캠핑/백패킹');
+insert into interest_sub(interNum, interSubName) values (1, '국내여행');
+insert into interest_sub(interNum, interSubName) values (1, '해외여행');
+insert into interest_sub(interNum, interSubName) values (1, '낚시');
+insert into interest_sub(interNum, interSubName) values (1, '패러글라이딩');
+
+insert into interest_sub(interNum, interSubName) values (2, '테니스');
+insert into interest_sub(interNum, interSubName) values (2, '야구');
+insert into interest_sub(interNum, interSubName) values (2, '축구');
+insert into interest_sub(interNum, interSubName) values (2, '스쿼시');
+insert into interest_sub(interNum, interSubName) values (2, '배드민턴');
+insert into interest_sub(interNum, interSubName) values (2, '농구');
+insert into interest_sub(interNum, interSubName) values (2, '탁구');
+
+-------------------------------------------------------------------------------------------
+select * from interest_sub;
+select interestName from interest;
+select * from member;
+drop table member;
+commit;
+
+insert into member values ('anandan1030@naver.com', '여', '나윤', 1111, 01092470732, 19941030, '전남순천시');
+select * from member where name = '나윤';
+
+commit;

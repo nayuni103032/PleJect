@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="GitCommitMessageComponent">
+		<list key="C:\Users\SIST82\Desktop\Project\.git">
+			<item value="false"/>
+			<item value="dnqls8234 &lt;denqls8234@gmail.com&gt;"/>
+			<item value="d"/>
+			<item value="dnqls8234 &lt;denqls8234@gmail.com&gt;"/>
+			<item value="417b0dc1ad980debe11d4e36483b82b77f49ea19"/>
+		</list>
 	</section>
 	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
-		<item value="200,200" key="STAGING_SASH_FORM_WEIGHT"/>
+		<item value="500,500" key="STAGING_SASH_FORM_WEIGHT"/>
 		<item value="false" key="sortItemState"/>
-		<item value="200,200" key="HORIZONTAL_SASH_FORM_WEIGHT"/>
+		<item value="500,500" key="HORIZONTAL_SASH_FORM_WEIGHT"/>
 	</section>
 </section>

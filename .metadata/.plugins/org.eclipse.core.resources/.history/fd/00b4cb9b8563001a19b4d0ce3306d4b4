@@ -1,0 +1,101 @@
+package conn;
+
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Enumeration;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import conn.RequestMapping.RequestMethod;
+import dao.LogonDao;
+import dao.RoomDao;
+import model.LogonDataBean;
+import model.RoomDataBean;
+import conn.RequestMapping;
+
+public class RoomController extends ActionAnnotation {
+
+	@Override
+	public void initProcess(HttpServletRequest request, HttpServletResponse reponse) {
+		HttpSession session = request.getSession();
+
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	@RequestMapping(value = "roomWriteForm", method = RequestMethod.GET)
+	public String Room_writeFrom(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		
+		LogonDao service = LogonDao.getInstance();
+		LogonDataBean member = service.getUser((String)session.getAttribute("memEmail"));
+		
+		request.setAttribute("name", member.getName());
+		
+		return "/view/content/room/roomWriteForm.jsp";
+	}
+	
+	@RequestMapping(value = "roomWritePro", method = RequestMethod.POST)
+	public String Room_writePro(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		
+		String realFolder="";
+		String saveFolder="uploadFile";
+		String encType="UTF-8";
+		int maxSize = 10*1024*1024;
+		ServletContext context = getServletContext();
+		realFolder = context.getRealPath(saveFolder);
+		
+		try{
+			MultipartRequest multi = new MultipartRequest(request, realFolder,maxSize,encType, new DefaultFileRenamePolicy());
+			RoomDataBean Room = new RoomDataBean();
+			Enumeration files = multi.getFileNames();
+			
+			if(files.hasMoreElements()){
+				String name = (String)files.nextElement();
+				File file = multi.getFile(name);
+				if(file !=null){
+					Room.setPhoto(file.getName());
+				}else{
+					Room.setPhoto("");
+				}
+				
+			}
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			
+			Room.setContent(multi.getParameter("content"));
+			Room.setHost(multi.getParameter("host"));
+			Room.setLike_ca(Integer.parseInt(multi.getParameter("like_ca")));
+			Room.setLike_sub(Integer.parseInt(multi.getParameter("like_sub")));
+			Room.setLocation(multi.getParameter("location"));
+			System.out.println(multi.getParameter("meet_date"));
+			Room.setMeet_date(java.sql.Date.valueOf(sdf.format(multi.getParameter("meet_date"))));
+			Room.setMeet_title(multi.getParameter("meet_title"));
+			Room.setMembercnt(Integer.parseInt(multi.getParameter("membercnt")));
+			
+			RoomDao service = RoomDao.getInstance();
+			service.RoomInsert(Room);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		
+		return "/view/content/room/roomWriteForm.jsp";
+	}
+}
